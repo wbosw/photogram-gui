@@ -51,7 +51,7 @@ redirect_to("/photos/#{new_photo.id}")
 end
 
 def add_comment
-  @the_photo = Photo.where({:id => params.fetch("photo_id")} ).first
+  @the_photo = Photo.where({:id => params.fetch("input_photo_id")} ).first
 #create new comment
 new_comment = Comment.new
 #enter values
