@@ -9,4 +9,6 @@ get("/photos", {:controller => "photos", :action => "index"} )
 
 get("/photos/:photo_id", {:controller => "photos", :action => "show"} )
 
+
+
 end
