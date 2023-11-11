@@ -1,22 +1,13 @@
-<nav>
-      <ul>
-        <li>
-          <a href="/users">Users</a>
-        </li>
-        <li>
-          <a href="/photos">Photos</a>
-        </li>
-      </ul>
-    </nav>
 
-    <h1>chi</h1>
+
+<h1><%= @the_user.username%></h1>
 
 <dl>
   <dt>
     ID
   </dt>
   <dd>
-    114
+    <%= @the_user.id %>
   </dd>
 
   <dt>
@@ -25,14 +16,14 @@
   <dd>
     <form action="/update_user/114" method="post">
       <label for="browser_username">Username</label>
-      <input id="browser_username" type="text" name="input_username" value=chi>
+      <input id="browser_username" type="text" name="input_username" value="<%= @the_user.username %>">
 
       <button>Update user</button>
     </form>
   </dd>
 </dl>
 
-<h2>Own photos (13)</h2>
+<h2>Own photos (<%= @the_user.own_photos.count %>)</h2>
 
 <table border="1">
   <tr>
@@ -56,28 +47,29 @@
     </th>
   </tr>
 
-
-    <tr>
+  <tr>
+    <% @the_user.own_photos.each do |a_photo| %>
       <td>
-        <img src=https://robohash.org/veritatispraesentiumet.png?size=300x300&amp;set=set1>
+        <img src=<%= a_photo.image %>>
       </td>
 
       <td>
-        chi
+        <%= a_photo.poster.username %>
       </td>
 
       <td>
-        And I have a tender spot in my heart for cripples and bastards and broken things.
+        <%= a_photo.caption%>
       </td>
 
       <td>
-        2017-12-07 16:16:53 UTC
+        <%= a_photo.created_at %>
       </td>
 
       <td>
-        <a href="/photos/893">
+        <a href="/photos/<%= a_photo.id %>">
           Show details
         </a>
       </td>
     </tr>
-    </table>
+    <% end %>
+  </table>
