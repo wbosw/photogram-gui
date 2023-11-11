@@ -9,6 +9,7 @@ get("/photos", {:controller => "photos", :action => "index"} )
 
 get("/photos/:photo_id", {:controller => "photos", :action => "show"} )
 
-
+post("/update_photo/:photo_id", {:controller => "photos", :action => "update"})
+get("/delete_photo/:photo_id", {:controller => "photos", :action => "destroy"})
 
 end
